@@ -441,3 +441,15 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .lab-shell.dark .machine-specimen.ink-blue { color: #9eb1ff; }
 @media (max-width: 900px) { .machine-controls { border-top: 1px solid var(--line); padding-top: 25px; }.anatomy-stage { min-height: 700px; }.anatomy-letter-wrap { inset-block: 65px 175px; } }
 @media (max-width: 620px) { .machine-control-group { padding: 13px; }.machine-presets { grid-template-columns: repeat(2, minmax(0, 1fr)); }.machine-actions { display: grid; grid-template-columns: 1fr 1fr; }.anatomy-stage { min-height: 620px; }.anatomy-letter-wrap { inset-block: 58px 205px; }.anatomy-legend { bottom: 130px; }.anatomy-caption { bottom: 22px; padding-top: 18px; } }
+
+/* precision revision: anatomy hierarchy + slightly larger control affordances */
+.refined-anatomy { grid-template-columns: 1fr; gap: 34px; }
+.refined-anatomy .anatomy-stage { min-height: 780px; }
+.refined-anatomy .anatomy-explanation { border-left: 0; border-top: 1px solid var(--line); padding: 28px 0 0; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr); gap: 26px; align-items: start; }
+.refined-anatomy .anatomy-explanation .term-index-head { grid-column: 1 / -1; }
+.refined-anatomy .anatomy-explanation .term-list { grid-column: 1; }
+.refined-anatomy .anatomy-explanation .term-definition { grid-column: 2; margin-top: 0; }
+.refined-anatomy .anatomy-explanation .guided-controls { grid-column: 1 / -1; }
+.choice-grid button, .machine-presets button { padding: 10.5px 7px; font-size: 9.5px; }
+@media (max-width: 900px) { .refined-anatomy .anatomy-stage { min-height: 730px; }.refined-anatomy .anatomy-explanation { grid-template-columns: 1fr; }.refined-anatomy .anatomy-explanation .term-list, .refined-anatomy .anatomy-explanation .term-definition { grid-column: 1; } }
+@media (max-width: 620px) { .refined-anatomy { gap: 26px; }.refined-anatomy .anatomy-stage { min-height: 650px; }.refined-anatomy .anatomy-explanation { padding-top: 22px; gap: 18px; } }

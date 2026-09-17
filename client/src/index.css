@@ -476,4 +476,6 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 /* scoped homepage tile fixes */
 .tile-classification .tile-visual::before,
 .tile-classification .tile-visual::after { content: none; }
+.tile-classification .tile-visual { inset: 55px 18px 90px; justify-content: center; align-items: center; font-size: clamp(42px, 5vw, 72px); padding: 0; }
 .tile-serif-sans .tile-bottom h2 { color: #f4f2ea; }
+@media (max-width: 620px) { .tile-classification .tile-visual { inset: 48px 8px 58px; font-size: 42px; } }

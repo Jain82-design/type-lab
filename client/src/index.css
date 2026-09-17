@@ -416,3 +416,28 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .lab-shell.dark .classification-input input::placeholder, .lab-shell.dark .battle-input-row .field-label input::placeholder { color: #a9a8a2; }
 @media (max-width: 900px) { .battle-input-row { grid-template-columns: 1fr 1fr; }.battle-input-row .field-label { grid-column: 1 / -1; }.anatomy-explanation .term-list { max-height: 300px; }.type-test-controls { padding-left: 0; } }
 @media (max-width: 620px) { .anatomy-explanation .term-list { grid-template-columns: 1fr 1fr; max-height: 270px; gap: 0 12px; }.anatomy-explanation .term-list button { font-size: 12px; }.battle-input-row { grid-template-columns: 1fr; gap: 14px; margin-bottom: 24px; }.battle-input-row .field-label { grid-column: auto; }.toolbox-subcontrols { grid-template-columns: 1fr; }.preset-grid { grid-template-columns: repeat(2, 1fr); }.toolbox-bottom-actions { display: grid; grid-template-columns: 1fr 1fr; }.classification-input input { font-size: 17px; } }
+
+/* final brief refinement: anatomy breathing room + Type Machine control cards */
+.machine-controls { gap: 16px; padding-left: 0; border-left: 0; }
+.machine-control-group { display: grid; gap: 12px; padding: 15px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper-deep) 60%, transparent); }
+.machine-control-group > .mono { color: var(--blue); font-size: 9px; }
+.machine-ranges { gap: 14px; }
+.machine-choice-group { gap: 10px; }
+.choice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 8px; }
+.choice-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 0; }
+.choice-grid button, .machine-presets button { min-width: 0; padding: 9px 6px; border: 1px solid var(--line); color: var(--ink-soft); background: transparent; font: 9px var(--mono); text-transform: uppercase; transition: border-color .18s, color .18s, background .18s; }
+.choice-grid button:hover, .choice-grid button.active, .machine-presets button:hover, .machine-presets button.active { border-color: var(--blue); color: var(--blue); background: rgba(42,85,255,.1); }
+.machine-presets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.machine-actions { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 2px; }
+.machine-actions .text-button { font-size: 9px; }
+.machine-specimen.ink-blue { color: var(--blue); }
+.anatomy-stage { min-height: 730px; }
+.anatomy-letter-wrap { inset-block: 72px 170px; }
+.anatomy-legend { bottom: 115px; }
+.anatomy-caption { bottom: 30px; padding-top: 22px; }
+.anatomy-caption p { max-width: 560px; line-height: 1.55; }
+.lab-shell.dark .machine-control-group { background: rgba(255,255,255,.035); border-color: rgba(244,242,234,.24); }
+.lab-shell.dark .choice-grid button, .lab-shell.dark .machine-presets button { color: #d8d5cd; border-color: rgba(244,242,234,.28); }
+.lab-shell.dark .machine-specimen.ink-blue { color: #9eb1ff; }
+@media (max-width: 900px) { .machine-controls { border-top: 1px solid var(--line); padding-top: 25px; }.anatomy-stage { min-height: 700px; }.anatomy-letter-wrap { inset-block: 65px 175px; } }
+@media (max-width: 620px) { .machine-control-group { padding: 13px; }.machine-presets { grid-template-columns: repeat(2, minmax(0, 1fr)); }.machine-actions { display: grid; grid-template-columns: 1fr 1fr; }.anatomy-stage { min-height: 620px; }.anatomy-letter-wrap { inset-block: 58px 205px; }.anatomy-legend { bottom: 130px; }.anatomy-caption { bottom: 22px; padding-top: 18px; } }

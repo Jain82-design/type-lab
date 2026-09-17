@@ -472,3 +472,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .classification-specimen .class-meta .eyebrow { font-size: 12px; letter-spacing: .16em; }
 .serif-side > .mono { font-size: 13px; letter-spacing: .16em; margin-bottom: 24px; }
 .serif-side .serif-big { margin-bottom: 26px; }
+
+/* scoped homepage tile fixes */
+.tile-classification .tile-visual::before,
+.tile-classification .tile-visual::after { content: none; }
+.tile-serif-sans .tile-bottom h2 { color: #f4f2ea; }

@@ -466,3 +466,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .serif-side .serif-big { margin-top: 0; margin-bottom: 22px; }
 .serif-side p { margin-top: 22px; }
 @media (max-width: 620px) { .classification-specimen .class-meta { padding-top: 6px; margin-bottom: 16px; }.serif-side > .mono { margin-bottom: 16px; font-size: 11px; }.serif-side .serif-big { margin-bottom: 18px; } }
+
+/* current-request verification pass: only requested visibility refinements */
+.classification-specimen .class-meta { padding-top: 18px; margin-bottom: 26px; }
+.classification-specimen .class-meta .eyebrow { font-size: 12px; letter-spacing: .16em; }
+.serif-side > .mono { font-size: 13px; letter-spacing: .16em; margin-bottom: 24px; }
+.serif-side .serif-big { margin-bottom: 26px; }

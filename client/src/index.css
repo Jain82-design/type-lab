@@ -457,3 +457,12 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 /* requested addition: boundary around Type Machine feature controls */
 .machine-controls { border: 1px solid var(--line); padding: 16px; }
 @media (max-width: 900px) { .machine-controls { padding: 16px 0 0; border-left: 0; border-right: 0; border-bottom: 0; } }
+
+/* final precision pass: Classification breathing room + Serif/Sans label visibility */
+.classification-specimen .class-meta { padding-top: 10px; margin-bottom: 20px; }
+.classification-specimen .class-meta .eyebrow { font-size: 11px; letter-spacing: .14em; }
+.classification-specimen .classification-input { margin-top: 4px; }
+.serif-side > .mono { display: block; margin-bottom: 20px; font-size: 12px; font-weight: 600; letter-spacing: .14em; }
+.serif-side .serif-big { margin-top: 0; margin-bottom: 22px; }
+.serif-side p { margin-top: 22px; }
+@media (max-width: 620px) { .classification-specimen .class-meta { padding-top: 6px; margin-bottom: 16px; }.serif-side > .mono { margin-bottom: 16px; font-size: 11px; }.serif-side .serif-big { margin-bottom: 18px; } }

@@ -40,7 +40,7 @@ const fontOptions = [
 const exhibits = [
   { id: "machine", number: "01", title: "TYPE MACHINE", descriptor: "Tune a living specimen.", kicker: "VARIABLE / EDIT", visual: "Aa", className: "tile-machine" },
   { id: "anatomy", number: "02", title: "ANATOMY", descriptor: "Look closer at the letter.", kicker: "FORM / STRUCTURE", visual: "g", className: "tile-anatomy" },
-  { id: "classification", number: "03", title: "CLASSIFICATION", descriptor: "Map the typographic genome.", kicker: "FAMILIES / CONTEXT", visual: "Aa", className: "tile-classification" },
+  { id: "classification", number: "03", title: "CLASSIFICATION", descriptor: "Map the typographic genome.", kicker: "FAMILIES / CONTEXT", visual: "", className: "tile-classification" },
   { id: "psychology", number: "04", title: "PSYCHOLOGY", descriptor: "Feel the voice of a face.", kicker: "TONE / PERCEPTION", visual: "LOUD", className: "tile-psychology" },
   { id: "battle", number: "05", title: "TYPE BATTLE", descriptor: "Two faces. One message.", kicker: "COMPARE / CONTRAST", visual: "A/B", className: "tile-battle" },
   { id: "quiz", number: "06", title: "QUIZ", descriptor: "Test your eye.", kicker: "KNOWLEDGE / 06", visual: "?", className: "tile-quiz" },

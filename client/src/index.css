@@ -453,3 +453,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .choice-grid button, .machine-presets button { padding: 10.5px 7px; font-size: 9.5px; }
 @media (max-width: 900px) { .refined-anatomy .anatomy-stage { min-height: 730px; }.refined-anatomy .anatomy-explanation { grid-template-columns: 1fr; }.refined-anatomy .anatomy-explanation .term-list, .refined-anatomy .anatomy-explanation .term-definition { grid-column: 1; } }
 @media (max-width: 620px) { .refined-anatomy { gap: 26px; }.refined-anatomy .anatomy-stage { min-height: 650px; }.refined-anatomy .anatomy-explanation { padding-top: 22px; gap: 18px; } }
+
+/* requested addition: boundary around Type Machine feature controls */
+.machine-controls { border: 1px solid var(--line); padding: 16px; }
+@media (max-width: 900px) { .machine-controls { padding: 16px 0 0; border-left: 0; border-right: 0; border-bottom: 0; } }

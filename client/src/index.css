@@ -390,3 +390,29 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .lab-select option { background: #f7f5ef; color: #262522; }
 .lab-shell.dark .lab-select { background: #181a1d; color: #f3f1eb; border-color: rgba(244,242,234,.52); color-scheme: dark; }
 .lab-shell.dark .lab-select option { background: #181a1d; color: #f3f1eb; }
+/* final brief: complete anatomy, toolbox, classification, battle, psychology */
+.anatomy-explanation .term-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; max-height: 430px; overflow-y: auto; }
+.anatomy-explanation .term-list button { min-width: 0; padding: 11px 0; font-size: 13px; }
+.anatomy-explanation .term-list button span { min-width: 0; overflow-wrap: anywhere; }
+.anatomy-caption p { max-width: 520px; line-height: 1.45; }
+.classification-input { display: grid; gap: 7px; margin-top: 22px; }
+.classification-input .mono { color: var(--blue); font-size: 9px; }
+.classification-input input { width: 100%; padding: 11px 13px; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); font: 18px var(--serif); outline: none; }
+.classification-input input:focus { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(42,85,255,.13); }
+.classification-specimen { grid-template-rows: auto auto minmax(230px, 1fr) auto; }
+.battle-input-row { display: grid; grid-template-columns: minmax(220px, 1.6fr) repeat(3, minmax(110px, .7fr)); gap: 20px; max-width: 1000px; margin: 0 auto 35px; padding-bottom: 25px; border-bottom: 1px solid var(--line); }
+.battle-input-row .field-label input { width: 100%; padding: 9px 0; border: 0; border-bottom: 1px solid var(--line-strong); background: transparent; color: var(--ink); font: 18px var(--serif); outline: none; }
+.battle-input-row .field-label input:focus { border-color: var(--blue); }
+.battle-side .specimen { min-height: 110px; display: flex; align-items: center; overflow-wrap: anywhere; }
+.mood-list { overflow-y: auto; }
+.toolbox-subcontrols { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; align-items: end; margin-top: 15px; }
+.preset-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 18px; }
+.preset-grid > .mono { grid-column: 1 / -1; margin-bottom: 3px; }
+.preset-grid button { padding: 8px 7px; border: 1px solid var(--line); color: var(--ink-soft); font: 8px var(--mono); letter-spacing: .05em; }
+.preset-grid button:hover, .preset-grid button.active { border-color: var(--blue); color: var(--blue); background: rgba(42,85,255,.1); }
+.toolbox-bottom-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--line); }
+.toolbox-bottom-actions .text-button { font-size: 9px; }
+.lab-shell.dark .classification-input input, .lab-shell.dark .battle-input-row .field-label input { background: #181a1d; color: #f3f1eb; border-color: rgba(244,242,234,.52); }
+.lab-shell.dark .classification-input input::placeholder, .lab-shell.dark .battle-input-row .field-label input::placeholder { color: #a9a8a2; }
+@media (max-width: 900px) { .battle-input-row { grid-template-columns: 1fr 1fr; }.battle-input-row .field-label { grid-column: 1 / -1; }.anatomy-explanation .term-list { max-height: 300px; }.type-test-controls { padding-left: 0; } }
+@media (max-width: 620px) { .anatomy-explanation .term-list { grid-template-columns: 1fr 1fr; max-height: 270px; gap: 0 12px; }.anatomy-explanation .term-list button { font-size: 12px; }.battle-input-row { grid-template-columns: 1fr; gap: 14px; margin-bottom: 24px; }.battle-input-row .field-label { grid-column: auto; }.toolbox-subcontrols { grid-template-columns: 1fr; }.preset-grid { grid-template-columns: repeat(2, 1fr); }.toolbox-bottom-actions { display: grid; grid-template-columns: 1fr 1fr; }.classification-input input { font-size: 17px; } }

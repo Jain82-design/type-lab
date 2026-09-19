@@ -69,22 +69,37 @@ const anatomyTerms = [
 ];
 
 const anatomyFeatures = [
-  { label: "Baseline", type: "guide", letters: ["Typography"], x: 50, y: 73, side: "left", where: "the bottom line the word sits on", explanation: "Letters sit on the baseline like words sit on a page. It keeps a line of type steady." },
-  { label: "Cap Height", type: "guide", letters: ["Typography"], x: 3, y: 25, side: "left", where: "the top of the capital T", explanation: "Cap height is the distance from the baseline to the top of a capital letter." },
-  { label: "X-Height", type: "guide", letters: ["Typography"], x: 36, y: 48, side: "left", where: "the top of the lowercase body", explanation: "X-height is the height of the main lowercase body. It changes how large and readable a typeface feels." },
-  { label: "Ascender", type: "part", letters: ["Typography"], x: 76, y: 27, side: "right", where: "the tall stem of h rising above x-height", explanation: "The h in Typography has an ascender: a lowercase stroke that rises above its main body." },
-  { label: "Descender", type: "part", letters: ["Typography"], x: 96, y: 87, side: "right", where: "the descending stroke of y", explanation: "The final y in Typography has a descender that drops below the baseline." },
-  { label: "Stem", type: "part", letters: ["Typography"], x: 76, y: 51, side: "right", where: "the main vertical stroke of h", explanation: "The stem is the main structural stroke. It carries much of a letter's visual weight." },
-  { label: "Bowl", type: "part", letters: ["Typography"], x: 39, y: 50, side: "left", where: "the rounded outer stroke of o", explanation: "The bowl is the rounded stroke enclosing the counter of the lowercase o." },
-  { label: "Counter", type: "part", letters: ["Typography"], x: 39, y: 54, side: "left", where: "the enclosed negative space inside o", explanation: "A counter is the space inside a letter. Its size and shape affect readability." },
-  { label: "Serif", type: "part", letters: ["Typography"], x: 4, y: 73, side: "left", where: "the finishing stroke at the foot of T", explanation: "A serif is a small finishing stroke. It can add rhythm and a more literary voice." },
-  { label: "Terminal", type: "part", letters: ["Typography"], x: 96, y: 63, side: "right", where: "the ending stroke of y", explanation: "A terminal is where a stroke ends. Its shape can feel sharp, soft, or expressive." },
-  { label: "Aperture", type: "part", letters: ["Typography"], x: 61, y: 53, side: "right", where: "the opening of the lowercase a", explanation: "An aperture is an opening into a partly enclosed counter. A generous aperture helps a small letter stay clear." },
-  { label: "Crossbar", type: "part", letters: ["Typography"], x: 3, y: 34, side: "left", where: "the horizontal stroke of T", explanation: "The crossbar is the horizontal stroke across the top of T that anchors its vertical stem." },
-  { label: "Ear", type: "part", letters: ["Typography"], x: 48, y: 40, side: "right", where: "the small projecting stroke of g", explanation: "The ear is the small stroke that projects from the top of a two-storey lowercase g." },
-  { label: "Tail", type: "part", letters: ["Typography"], x: 96, y: 86, side: "right", where: "the descending sweep of y", explanation: "The y has a tail: a descending stroke that gives a letter movement and personality." },
-  { label: "Apex", type: "part", letters: [], x: 0, y: 0, side: "right", where: "not present in Typography", explanation: "Typography has no pointed capital such as A or R, so there is no apex to mark in this word." },
+  { label: "Baseline", kind: "baseline", where: "the line the text sits on", explanation: "The baseline steadies a line of type and lets different letters align consistently." },
+  { label: "Cap Height", kind: "cap", where: "the top of an uppercase letter", explanation: "Cap height measures from the baseline to the top of a capital letter." },
+  { label: "X-Height", kind: "xheight", where: "the top of the lowercase body", explanation: "X-height changes how large and readable lowercase text feels at a given size." },
+  { label: "Ascender", kind: "ascender", where: "a stroke rising above the x-height", explanation: "Ascenders give letters such as h, l, and d their vertical reach." },
+  { label: "Descender", kind: "descender", where: "a stroke dropping below the baseline", explanation: "Descenders extend below the baseline, as in g, p, q, and y." },
+  { label: "Stem", kind: "stem", where: "the main structural stroke", explanation: "The stem carries much of a letter's visual weight and structure." },
+  { label: "Bowl", kind: "bowl", where: "a rounded stroke enclosing a counter", explanation: "A bowl wraps around a counter and defines the rounded mass of a letter." },
+  { label: "Counter", kind: "counter", where: "the enclosed or partly enclosed negative space", explanation: "Counters are the spaces inside letters; their size and shape affect readability." },
+  { label: "Serif", kind: "serif", where: "a finishing stroke at the end of a main stroke", explanation: "Serifs create rhythm and can give a typeface a more literary voice." },
+  { label: "Terminal", kind: "terminal", where: "the end of a stroke without a serif", explanation: "Terminals shape the personality of a stroke's ending." },
+  { label: "Aperture", kind: "aperture", where: "an opening into a partly enclosed counter", explanation: "A generous aperture helps small text remain clear and open." },
+  { label: "Crossbar", kind: "crossbar", where: "a horizontal stroke crossing a stem", explanation: "Crossbars change the balance and recognition of letters such as t, f, and A." },
+  { label: "Ear", kind: "ear", where: "a small projecting stroke near the top of a letter", explanation: "An ear is a distinctive detail, most clearly seen on a two-storey g." },
+  { label: "Tail", kind: "tail", where: "a descending or sweeping finishing stroke", explanation: "Tails add movement and personality to letters such as y, j, and Q." },
+  { label: "Apex", kind: "apex", where: "the pointed top where strokes meet", explanation: "An apex occurs where angled strokes meet, as at the top of A or V." },
 ];
+
+const anatomyMatches = (kind: string, char: string) => {
+  if (kind === "cap" || kind === "apex") return /[A-Z]/.test(char) && (kind === "cap" || /[AMNVWXY]/.test(char));
+  if (kind === "xheight") return /[a-z]/.test(char) && !/[bdfhkltgjpqy]/.test(char);
+  if (kind === "ascender") return /[bdfhklt]/.test(char);
+  if (kind === "descender" || kind === "tail") return /[gjpqy]/.test(char);
+  if (kind === "stem") return /[bdfhijklmnpqrt]/i.test(char);
+  if (kind === "bowl") return /[bdfgopqPRBD]/i.test(char);
+  if (kind === "counter") return /[aAbdeghnoprqBRPD]/i.test(char);
+  if (kind === "serif" || kind === "terminal") return /\S/.test(char);
+  if (kind === "aperture") return /[aceos]/i.test(char);
+  if (kind === "crossbar") return /[AefHt]/i.test(char);
+  if (kind === "ear") return /g/.test(char);
+  return false;
+};
 
 const classificationData = [
   { name: "Serif", specimen: "Humanist", font: "'Fraunces', serif", description: "Small finishing strokes create a visible rhythm and help guide the eye across long reading lines.", history: "Rooted in inscriptional forms and the craft of early type foundries.", uses: "Editorial, literary, cultural, luxury", tone: "Measured / trusted" },
@@ -166,11 +181,8 @@ export default function Home() {
   const [machineInk, setMachineInk] = useState("black");
   const [machinePreset, setMachinePreset] = useState("EDITORIAL");
 
-  const [anatomyLetter] = useState("Typography");
-  const [anatomyTerm, setAnatomyTerm] = useState("Counter");
-  const [anatomyMode, setAnatomyMode] = useState<"explore" | "guided">("explore");
-  const [anatomyLabels, setAnatomyLabels] = useState(true);
-  const [anatomyFeature, setAnatomyFeature] = useState("Counter");
+  const [anatomyText, setAnatomyText] = useState("Typography");
+  const [anatomyFeature, setAnatomyFeature] = useState("Baseline");
   const [classification, setClassification] = useState(0);
   const [classificationText, setClassificationText] = useState("");
   const [mood, setMood] = useState("trust");
@@ -338,20 +350,22 @@ export default function Home() {
     </ExhibitFrame>;
   };
   const renderAnatomy = () => {
-    const relevant = anatomyFeatures.filter((feature) => feature.letters.includes(anatomyLetter));
-    const active = anatomyFeatures.find((feature) => feature.label === anatomyFeature) || relevant[0] || anatomyFeatures[0];
-    const activeIndex = Math.max(0, anatomyFeatures.findIndex((feature) => feature.label === active.label));
-    const chooseFeature = (label: string) => { setAnatomyFeature(label); setAnatomyTerm(label); };
-    const stepFeature = (direction: number) => { const next = (activeIndex + direction + anatomyFeatures.length) % anatomyFeatures.length; chooseFeature(anatomyFeatures[next].label); };
-    return <ExhibitFrame eyebrow="FORM / STRUCTURE" title="ANATOMY" intro="A typeface is a system of relationships. Follow the line to see exactly where each feature lives." number="02">
-      <div className="anatomy-toolbar"><div className="anatomy-mode"><button className={anatomyMode === "explore" ? "active" : ""} onClick={() => setAnatomyMode("explore")}>Explore mode</button><button className={anatomyMode === "guided" ? "active" : ""} onClick={() => setAnatomyMode("guided")}>Guided mode</button></div><div className="anatomy-actions"><button onClick={() => setAnatomyLabels(true)}>Show all labels</button><button onClick={() => setAnatomyLabels(false)}>Hide labels</button><button onClick={() => { setAnatomyLabels(true); setAnatomyMode("explore"); chooseFeature(anatomyFeatures[0]?.label || "Counter"); }}>Reset</button></div></div>
-      <div className={`anatomy-layout refined-anatomy ${anatomyMode}`}>
-        <div className="anatomy-stage">
-          <div className="anatomy-legend"><span><i className="legend-blue" /> blue marker / interactive point</span><span><i className="legend-line" /> leader line / exact location</span><span><i className="legend-highlight" /> highlight / selected feature</span></div>
-          <div className="anatomy-letter-wrap clear-specimen"><span className="measure-label cap">CAP HEIGHT</span><span className="measure-label xheight">X-HEIGHT</span><span className="measure-label base">BASELINE</span><span className="measure-label desc">DESCENDER</span><div className="guide-line guide-cap" /><div className="guide-line guide-x" /><div className="guide-line guide-base" /><div className="guide-line guide-desc" /><div className="anatomy-letter anatomy-word">{anatomyLetter}</div>{anatomyLabels && <div className="feature-map">{relevant.map((feature) => <button key={feature.label} className={`feature-pin ${active.label === feature.label ? "active" : ""} side-${feature.side}`} style={{ left: `${feature.x}%`, top: `${feature.y}%` }} onMouseEnter={() => chooseFeature(feature.label)} onFocus={() => chooseFeature(feature.label)} onClick={() => chooseFeature(feature.label)} aria-label={`Inspect ${feature.label}`}><i /><span className="feature-leader" /><b>{feature.label}</b></button>)}</div>}</div>
-          <div className="anatomy-caption"><span className="mono">SPECIMEN / {anatomyLetter.toUpperCase()} / {anatomyFeatures.length} FEATURES</span><p><strong>How to read:</strong> follow the blue line from a label to its dot. <strong>{active.label}</strong> is {active.where}.</p></div>
+    const active = anatomyFeatures.find((feature) => feature.label === anatomyFeature) || anatomyFeatures[0];
+    const chars = Array.from(anatomyText);
+    const present = active.kind === "baseline" ? anatomyText.trim().length > 0 : chars.some((char) => anatomyMatches(active.kind, char));
+    const activeIndex = anatomyFeatures.findIndex((feature) => feature.label === active.label);
+    return <ExhibitFrame eyebrow="FORM / STRUCTURE" title="ANATOMY LAB" intro="Type a word or letter, then select a feature to inspect its living anatomy." number="02">
+      <div className="anatomy-lab">
+        <label className="anatomy-input-label"><span className="feature-label">TYPE A WORD OR LETTER</span><input aria-label="Type a word or letter" placeholder="Type a word or letter..." value={anatomyText} onChange={(event) => setAnatomyText(event.target.value)} /></label>
+        <div className="anatomy-feature-selector" role="group" aria-label="Anatomy feature selector">{anatomyFeatures.map((feature) => <button key={feature.label} className={active.label === feature.label ? "active" : ""} onClick={() => setAnatomyFeature(feature.label)}>{feature.label}</button>)}</div>
+        <div className={`anatomy-live-layout ${present ? "is-present" : "is-missing"}`}>
+          <section className={`anatomy-live-stage feature-${active.kind}`} aria-live="polite">
+            <div className="anatomy-live-specimen">{chars.length ? chars.map((char, index) => <span key={`${char}-${index}`} className={active.kind !== "baseline" && anatomyMatches(active.kind, char) ? "anatomy-highlight" : ""}>{char === " " ? "\u00a0" : char}</span>) : <span className="anatomy-empty">Type something above.</span>}</div>
+            {present && <div className="anatomy-live-annotation"><span className="anatomy-live-rule" /><b>{active.label}</b></div>}
+            {!present && <p className="anatomy-missing"><strong>{active.label} not found in this text.</strong> Try another word or choose a different feature.</p>}
+          </section>
+          <aside className="anatomy-info-panel"><div className="term-index-head"><span className="eyebrow">FEATURE INFORMATION</span><span className="mono">{activeIndex + 1} / {anatomyFeatures.length}</span></div><div className="anatomy-status"><span className="mono">{present ? "PRESENT IN TEXT" : "NOT PRESENT"}</span><i className={present ? "present" : "missing"} /></div><h3>{active.label}</h3><p><strong>{active.where}.</strong> {active.explanation}</p></aside>
         </div>
-        <aside className="term-index anatomy-explanation"><div className="term-index-head"><span className="eyebrow">{anatomyMode === "guided" ? "GUIDED OBSERVATION" : "FEATURE INDEX"}</span><span className="mono">{activeIndex + 1} / {anatomyFeatures.length}</span></div><div className="term-list">{anatomyFeatures.map((feature) => <button key={feature.label} className={active.label === feature.label ? "active" : ""} onClick={() => chooseFeature(feature.label)}><span>{feature.label}</span><ArrowUpRight size={14} /></button>)}</div><div className="term-definition"><span className="mono">WHERE IT IS</span><h3>{active.label}</h3><p><strong>{active.where}.</strong> {active.explanation}</p></div>{anatomyMode === "guided" && <div className="guided-controls"><button onClick={() => stepFeature(-1)}><ChevronLeft size={15} /> Previous</button><button onClick={() => stepFeature(1)}>Next <ChevronRight size={15} /></button></div>}</aside>
       </div>
     </ExhibitFrame>;
   };

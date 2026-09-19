@@ -150,6 +150,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .field-label input { font: 14px var(--sans); text-transform: none; letter-spacing: 0; }
 .feature-label { font-weight: 700 !important; }
 .field-label, .machine-control-group > .mono, .preset-grid > .mono, .readability-label { font-weight: 700; }
+.range-control > span > .feature-label, .machine-control-group > .mono, .preset-grid > .mono { font-weight: 700 !important; font-synthesis: weight; }
 .control-rail { display: flex; flex-direction: column; gap: 19px; padding: 18px 0 0 26px; border-left: 1px solid var(--line); }
 .control-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .compact { min-width: 0; }
@@ -175,11 +176,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 /* anatomy */
 .anatomy-layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 36px; }
 .anatomy-stage { position: relative; min-height: 615px; border: 1px solid var(--line); background: var(--paper-deep); overflow: hidden; }
-.letter-controls { position: absolute; z-index: 3; top: 20px; right: 22px; display: flex; align-items: center; gap: 4px; font-size: 9px; color: var(--ink-soft); }
-.letter-controls button { width: 29px; height: 29px; border: 1px solid var(--line); font: 16px var(--serif); transition: background .2s, color .2s, border-color .2s; }
-.letter-controls button:hover, .letter-controls button.active { color: white; background: var(--blue); border-color: var(--blue); }
 .anatomy-letter-wrap { position: absolute; inset: 65px 7% 95px; }
 .anatomy-letter { position: absolute; z-index: 2; inset: 5% 13% 0; display: grid; place-items: center; color: var(--ink); font-size: clamp(300px, 38vw, 615px); line-height: .7; transition: font-family .3s; }
+.anatomy-word { inset: 18% 3% 4%; font-family: 'Playfair Display', serif; font-size: clamp(72px, 10vw, 170px); line-height: 1; white-space: nowrap; letter-spacing: -.055em; }
 .guide-line { position: absolute; z-index: 1; left: 2%; right: 2%; border-top: 1px solid var(--blue); opacity: .65; }
 .guide-cap { top: 11%; }
 .guide-x { top: 40%; border-style: dashed; }
